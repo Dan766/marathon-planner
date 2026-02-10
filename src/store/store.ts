@@ -16,6 +16,9 @@ export interface CompletedWorkout {
   notes?: string
 }
 
+export type Theme = 'light' | 'dark' | 'system'
+export type DistanceUnit = 'mi' | 'km'
+
 interface AppState {
   // Wizard state
   wizardStep: number
@@ -24,12 +27,20 @@ interface AppState {
   // Progress tracking
   completedWorkouts: CompletedWorkout[]
 
+  // Theme
+  theme: Theme
+
+  // Units
+  unit: DistanceUnit
+
   // Actions
   setWizardStep: (step: number) => void
   setPlanConfig: (config: PlanConfig | null) => void
   updatePlanConfig: (partial: Partial<PlanConfig>) => void
   toggleWorkout: (weekIndex: number, dayIndex: number) => void
   addWorkoutNote: (weekIndex: number, dayIndex: number, notes: string) => void
+  setTheme: (theme: Theme) => void
+  setUnit: (unit: DistanceUnit) => void
   resetProgress: () => void
   resetAll: () => void
 }
@@ -40,6 +51,8 @@ export const useStore = create<AppState>()(
       wizardStep: 0,
       planConfig: null,
       completedWorkouts: [],
+      theme: 'system' as Theme,
+      unit: 'mi' as DistanceUnit,
 
       setWizardStep: (step) => set({ wizardStep: step }),
 
@@ -83,6 +96,9 @@ export const useStore = create<AppState>()(
           ),
         })
       },
+
+      setTheme: (theme) => set({ theme }),
+      setUnit: (unit) => set({ unit }),
 
       resetProgress: () => set({ completedWorkouts: [] }),
 

@@ -38,8 +38,8 @@ export function StepDateConfig() {
   return (
     <div className="max-w-lg mx-auto">
       <div className="text-center mb-8">
-        <h2 className="text-2xl font-bold text-gray-900">Set Your Race Date</h2>
-        <p className="text-gray-500 mt-2">
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Set Your Race Date</h2>
+        <p className="text-gray-500 dark:text-gray-400 mt-2">
           We'll calculate your {plan.totalWeeks}-week plan backwards from race day
         </p>
       </div>
@@ -47,7 +47,7 @@ export function StepDateConfig() {
       <div className="space-y-6">
         {/* Race Date */}
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
+          <label className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-2">
             Race Date
           </label>
           <input
@@ -55,10 +55,10 @@ export function StepDateConfig() {
             value={planConfig.raceDate}
             min={minRaceDate}
             onChange={(e) => updatePlanConfig({ raceDate: e.target.value })}
-            className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none text-lg"
+            className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none text-lg"
           />
           {planConfig.raceDate && (
-            <p className="mt-2 text-sm text-gray-500">
+            <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
               Race day: <strong>{format(parseISO(planConfig.raceDate), 'EEEE, MMMM d, yyyy')}</strong>
             </p>
           )}
@@ -66,7 +66,7 @@ export function StepDateConfig() {
 
         {/* Week Start Day */}
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
+          <label className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-2">
             Week Starts On
           </label>
           <div className="grid grid-cols-4 sm:grid-cols-7 gap-2">
@@ -77,7 +77,7 @@ export function StepDateConfig() {
                 className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
                   planConfig.startDayOfWeek === day.value
                     ? 'bg-primary text-white'
-                    : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                    : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
                 }`}
               >
                 {day.label.slice(0, 3)}
@@ -88,28 +88,28 @@ export function StepDateConfig() {
 
         {/* Calculated Summary */}
         {calculatedStart && planConfig.raceDate && (
-          <div className="bg-blue-50 rounded-xl p-5 border border-blue-100">
-            <h3 className="font-semibold text-blue-900 mb-3">Plan Summary</h3>
+          <div className="bg-blue-50 dark:bg-blue-900/20 rounded-xl p-5 border border-blue-100 dark:border-blue-800">
+            <h3 className="font-semibold text-blue-900 dark:text-blue-200 mb-3">Plan Summary</h3>
             <div className="space-y-2 text-sm">
               <div className="flex justify-between">
-                <span className="text-blue-700">Training Starts</span>
-                <span className="font-medium text-blue-900">
+                <span className="text-blue-700 dark:text-blue-300">Training Starts</span>
+                <span className="font-medium text-blue-900 dark:text-blue-200">
                   {format(calculatedStart, 'MMM d, yyyy')}
                 </span>
               </div>
               <div className="flex justify-between">
-                <span className="text-blue-700">Race Day</span>
-                <span className="font-medium text-blue-900">
+                <span className="text-blue-700 dark:text-blue-300">Race Day</span>
+                <span className="font-medium text-blue-900 dark:text-blue-200">
                   {format(parseISO(planConfig.raceDate), 'MMM d, yyyy')}
                 </span>
               </div>
               <div className="flex justify-between">
-                <span className="text-blue-700">Duration</span>
-                <span className="font-medium text-blue-900">{plan.totalWeeks} weeks</span>
+                <span className="text-blue-700 dark:text-blue-300">Duration</span>
+                <span className="font-medium text-blue-900 dark:text-blue-200">{plan.totalWeeks} weeks</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-blue-700">Plan</span>
-                <span className="font-medium text-blue-900">{plan.name}</span>
+                <span className="text-blue-700 dark:text-blue-300">Plan</span>
+                <span className="font-medium text-blue-900 dark:text-blue-200">{plan.name}</span>
               </div>
             </div>
           </div>

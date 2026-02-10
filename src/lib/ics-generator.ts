@@ -1,15 +1,16 @@
 import { createEvents, type EventAttributes } from 'ics'
 import type { ScheduledPlan } from './plan-engine'
-import { getWorkoutLabel } from './plan-engine'
+import { getWorkoutLabel, formatDistance } from './plan-engine'
+import type { DistanceUnit } from '../store/store'
 
-export function generateICS(scheduledPlan: ScheduledPlan): string | null {
+export function generateICS(scheduledPlan: ScheduledPlan, unit: DistanceUnit = 'mi'): string | null {
   const events: EventAttributes[] = []
 
   for (const week of scheduledPlan.weeks) {
     for (const day of week.days) {
       if (day.workout.type === 'rest') continue
 
-      const title = getWorkoutLabel(day.workout)
+      const title = getWorkoutLabel(day.workout, unit)
       const year = day.date.getFullYear()
       const month = day.date.getMonth() + 1
       const dayOfMonth = day.date.getDate()
@@ -17,7 +18,7 @@ export function generateICS(scheduledPlan: ScheduledPlan): string | null {
       let description = `Week ${week.weekNumber} - ${scheduledPlan.plan.name}\n`
       description += `Workout: ${title}\n`
       if (day.workout.distance) {
-        description += `Distance: ${day.workout.distance} miles\n`
+        description += `Distance: ${formatDistance(day.workout.distance, unit)}\n`
       }
       if (day.workout.duration) {
         description += `Duration: ${day.workout.duration}\n`

@@ -4,6 +4,8 @@ import { StepPlanSelect } from '../components/wizard/StepPlanSelect'
 import { StepDateConfig } from '../components/wizard/StepDateConfig'
 import { StepCustomize } from '../components/wizard/StepCustomize'
 import { StepPreview } from '../components/wizard/StepPreview'
+import { ThemeToggle } from '../components/ThemeToggle'
+import { UnitToggle } from '../components/UnitToggle'
 
 const STEPS = ['Select Plan', 'Set Dates', 'Customize', 'Preview']
 
@@ -46,12 +48,15 @@ export function PlanBuilderPage() {
             &larr; Home
           </button>
           <h1 className="text-lg font-semibold">Create Training Plan</h1>
-          <div className="w-16" />
+          <div className="flex items-center gap-3">
+            <UnitToggle />
+            <ThemeToggle />
+          </div>
         </div>
       </header>
 
       {/* Progress Bar */}
-      <div className="bg-white border-b border-gray-200 py-4 px-4 no-print">
+      <div className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 py-4 px-4 no-print">
         <div className="max-w-4xl mx-auto">
           <div className="flex items-center justify-between mb-2">
             {STEPS.map((step, i) => (
@@ -62,19 +67,19 @@ export function PlanBuilderPage() {
                       ? 'bg-secondary text-white'
                       : i === wizardStep
                       ? 'bg-primary text-white'
-                      : 'bg-gray-200 text-gray-500'
+                      : 'bg-gray-200 dark:bg-gray-600 text-gray-500 dark:text-gray-400'
                   }`}
                 >
                   {i < wizardStep ? '\u2713' : i + 1}
                 </div>
                 <span className={`ml-2 text-sm hidden sm:inline ${
-                  i === wizardStep ? 'text-gray-900 font-medium' : 'text-gray-500'
+                  i === wizardStep ? 'text-gray-900 dark:text-white font-medium' : 'text-gray-500 dark:text-gray-400'
                 }`}>
                   {step}
                 </span>
                 {i < STEPS.length - 1 && (
                   <div className={`w-8 sm:w-16 h-0.5 mx-2 ${
-                    i < wizardStep ? 'bg-secondary' : 'bg-gray-200'
+                    i < wizardStep ? 'bg-secondary' : 'bg-gray-200 dark:bg-gray-600'
                   }`} />
                 )}
               </div>
@@ -94,11 +99,11 @@ export function PlanBuilderPage() {
       </main>
 
       {/* Navigation Footer */}
-      <div className="border-t border-gray-200 bg-white py-4 px-4 no-print">
+      <div className="border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 py-4 px-4 no-print">
         <div className="max-w-4xl mx-auto flex justify-between">
           <button
             onClick={handleBack}
-            className="px-6 py-3 rounded-lg text-gray-600 hover:text-gray-900 hover:bg-gray-100 transition-colors font-medium"
+            className="px-6 py-3 rounded-lg text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors font-medium"
           >
             &larr; Back
           </button>
