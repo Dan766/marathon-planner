@@ -100,7 +100,7 @@ export function PlanViewPage() {
             onClick={handleShare}
             className="bg-white dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-200 px-5 py-2.5 rounded-lg font-medium text-sm border border-gray-300 dark:border-gray-600 transition-colors"
           >
-            {copiedShare ? '\u2713 Link Copied!' : '&#128279; Share Plan'}
+            {copiedShare ? '\u2713 Link Copied!' : '🔗 Share Plan'}
           </button>
           <button
             onClick={handlePrint}
