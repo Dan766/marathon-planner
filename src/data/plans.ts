@@ -1,4 +1,6 @@
 import type { TrainingPlan, Workout } from './types';
+import { halfMarathonPlans, halfPlanById } from './half-plans';
+import { fiveKPlans, fiveKPlanById } from './5k-plans';
 
 // Helper function to create a workout
 const w = (type: Workout['type'], distance?: number, duration?: string, notes?: string): Workout => ({
@@ -12,6 +14,7 @@ const w = (type: Workout['type'], distance?: number, duration?: string, notes?: 
 const novice1: TrainingPlan = {
   id: 'novice-1',
   name: 'Novice 1',
+  raceDistance: 'marathon',
   subtitle: 'For First-Time Marathoners',
   description: 'A beginner-friendly plan with 4 days of running per week, focusing on building endurance gradually with no speed work.',
   difficulty: 1,
@@ -44,6 +47,7 @@ const novice1: TrainingPlan = {
 const novice2: TrainingPlan = {
   id: 'novice-2',
   name: 'Novice 2',
+  raceDistance: 'marathon',
   subtitle: 'First Marathon with More Experience',
   description: 'A step up from Novice 1 with 5 days of running and the addition of pace runs to build speed and endurance.',
   difficulty: 2,
@@ -76,6 +80,7 @@ const novice2: TrainingPlan = {
 const intermediate1: TrainingPlan = {
   id: 'intermediate-1',
   name: 'Intermediate 1',
+  raceDistance: 'marathon',
   subtitle: 'For Experienced Runners',
   description: 'A balanced plan with tempo runs and higher mileage for runners looking to improve their marathon time.',
   difficulty: 3,
@@ -108,6 +113,7 @@ const intermediate1: TrainingPlan = {
 const intermediate2: TrainingPlan = {
   id: 'intermediate-2',
   name: 'Intermediate 2',
+  raceDistance: 'marathon',
   subtitle: 'For Serious Runners',
   description: 'A challenging plan with longer runs, tempo work, and some race pace segments for experienced marathoners seeking faster times.',
   difficulty: 4,
@@ -140,6 +146,7 @@ const intermediate2: TrainingPlan = {
 const advanced1: TrainingPlan = {
   id: 'advanced-1',
   name: 'Advanced 1',
+  raceDistance: 'marathon',
   subtitle: 'For Competitive Runners',
   description: 'An intense plan with 6 days of running including hill work, intervals, and tempo runs for competitive marathoners.',
   difficulty: 4,
@@ -172,6 +179,7 @@ const advanced1: TrainingPlan = {
 const advanced2: TrainingPlan = {
   id: 'advanced-2',
   name: 'Advanced 2',
+  raceDistance: 'marathon',
   subtitle: 'For Elite and Serious Competitive Runners',
   description: 'The most demanding plan with the highest mileage, advanced speed work, and race pace segments for elite marathoners.',
   difficulty: 5,
@@ -200,14 +208,21 @@ const advanced2: TrainingPlan = {
   ],
 };
 
-// Export all plans
-export const trainingPlans: TrainingPlan[] = [
+// Marathon plans
+const marathonPlans: TrainingPlan[] = [
   novice1,
   novice2,
   intermediate1,
   intermediate2,
   advanced1,
   advanced2,
+];
+
+// Export all plans (marathon + half marathon + 5K)
+export const trainingPlans: TrainingPlan[] = [
+  ...marathonPlans,
+  ...halfMarathonPlans,
+  ...fiveKPlans,
 ];
 
 export const planById: Record<string, TrainingPlan> = {
@@ -217,4 +232,6 @@ export const planById: Record<string, TrainingPlan> = {
   'intermediate-2': intermediate2,
   'advanced-1': advanced1,
   'advanced-2': advanced2,
+  ...halfPlanById,
+  ...fiveKPlanById,
 };

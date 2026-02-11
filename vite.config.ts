@@ -11,9 +11,9 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'mask-icon.svg'],
       manifest: {
-        name: 'Marathon Training Plan Generator',
+        name: 'Race Training Plan Generator',
         short_name: 'RunTracker',
-        description: 'Generate personalized marathon training plans and export to your calendar',
+        description: 'Generate personalized half marathon and marathon training plans and export to your calendar',
         theme_color: '#2563eb',
         background_color: '#ffffff',
         display: 'standalone',

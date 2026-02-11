@@ -13,9 +13,12 @@ export interface WeekSchedule {
   days: [Workout, Workout, Workout, Workout, Workout, Workout, Workout]; // Mon-Sun
 }
 
+export type RaceDistance = 'marathon' | 'half' | '5k';
+
 export interface TrainingPlan {
   id: string;
   name: string;
+  raceDistance: RaceDistance;
   subtitle: string;
   description: string;
   difficulty: 1 | 2 | 3 | 4 | 5;

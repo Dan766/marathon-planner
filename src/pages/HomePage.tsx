@@ -15,9 +15,9 @@ export function HomePage() {
           <UnitToggle />
           <ThemeToggle />
         </div>
-        <h1 className="text-3xl font-bold tracking-tight">Marathon Trainer</h1>
+        <h1 className="text-3xl font-bold tracking-tight">Race Trainer</h1>
         <p className="mt-2 text-blue-100 text-lg">
-          Personalized training plans based on Hal Higdon's methodology
+          Half marathon & marathon plans based on Hal Higdon's methodology
         </p>
       </header>
 
@@ -28,11 +28,11 @@ export function HomePage() {
           <div className="text-center space-y-4">
             <div className="text-6xl mb-4">&#127939;</div>
             <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
-              Your Marathon Journey Starts Here
+              Your Race Journey Starts Here
             </h2>
             <p className="text-gray-600 dark:text-gray-300 text-lg max-w-lg mx-auto">
-              Generate a personalized 18-week training plan, preview your schedule,
-              and export it directly to your calendar.
+              Generate a personalized training plan for your half marathon or marathon,
+              preview your schedule, and export it directly to your calendar.
             </p>
           </div>
 
@@ -69,8 +69,8 @@ export function HomePage() {
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-12">
             <FeatureCard
               icon="&#128197;"
-              title="6 Plans"
-              description="From Novice to Advanced, based on Hal Higdon's proven methodology"
+              title="11 Plans"
+              description="Half marathon & marathon plans from Novice to Advanced"
             />
             <FeatureCard
               icon="&#128228;"
@@ -88,7 +88,7 @@ export function HomePage() {
 
       {/* Footer */}
       <footer className="py-4 text-center text-gray-400 text-sm no-print">
-        Built with Hal Higdon's marathon training methodology
+        Built with Hal Higdon's training methodology
       </footer>
     </div>
   )

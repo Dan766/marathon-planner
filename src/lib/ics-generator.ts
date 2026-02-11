@@ -35,7 +35,7 @@ export function generateICS(scheduledPlan: ScheduledPlan, unit: DistanceUnit = '
         start: [year, month, dayOfMonth],
         duration: { hours: 1 },
         description,
-        categories: ['Marathon Training', day.workout.type],
+        categories: ['Race Training', day.workout.type],
         status: 'CONFIRMED' as const,
         busyStatus: 'BUSY' as const,
         alarms: [
@@ -59,7 +59,7 @@ export function generateICS(scheduledPlan: ScheduledPlan, unit: DistanceUnit = '
   return value ?? null
 }
 
-export function downloadICS(icsContent: string, filename: string = 'marathon-training-plan.ics') {
+export function downloadICS(icsContent: string, filename: string = 'training-plan.ics') {
   const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' })
   const url = URL.createObjectURL(blob)
   const link = document.createElement('a')

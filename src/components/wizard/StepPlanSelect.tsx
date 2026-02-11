@@ -1,6 +1,8 @@
+import { useState } from 'react'
 import { useStore } from '../../store/store'
 import { trainingPlans } from '../../data/plans'
 import { formatDistance } from '../../lib/plan-engine'
+import type { RaceDistance } from '../../data/types'
 
 const difficultyStars = (level: number) => {
   return Array.from({ length: 5 }, (_, i) => (
@@ -10,9 +12,24 @@ const difficultyStars = (level: number) => {
   ))
 }
 
+const distanceTabs: { value: RaceDistance; label: string }[] = [
+  { value: '5k', label: '5K' },
+  { value: 'half', label: 'Half Marathon' },
+  { value: 'marathon', label: 'Marathon' },
+]
+
 export function StepPlanSelect() {
   const { planConfig, setPlanConfig, updatePlanConfig, unit } = useStore()
   const selectedId = planConfig?.planId
+  const [activeDistance, setActiveDistance] = useState<RaceDistance>(() => {
+    if (selectedId) {
+      const selectedPlan = trainingPlans.find((p) => p.id === selectedId)
+      if (selectedPlan) return selectedPlan.raceDistance
+    }
+    return '5k'
+  })
+
+  const filteredPlans = trainingPlans.filter((p) => p.raceDistance === activeDistance)
 
   const handleSelect = (planId: string) => {
     if (planConfig) {
@@ -26,6 +43,10 @@ export function StepPlanSelect() {
     }
   }
 
+  const handleTabChange = (distance: RaceDistance) => {
+    setActiveDistance(distance)
+  }
+
   return (
     <div>
       <div className="text-center mb-8">
@@ -35,8 +56,27 @@ export function StepPlanSelect() {
         </p>
       </div>
 
+      {/* Distance Tabs */}
+      <div className="flex justify-center mb-6">
+        <div className="inline-flex rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-100 dark:bg-gray-800 p-1">
+          {distanceTabs.map((tab) => (
+            <button
+              key={tab.value}
+              onClick={() => handleTabChange(tab.value)}
+              className={`px-5 py-2 rounded-md text-sm font-medium transition-colors ${
+                activeDistance === tab.value
+                  ? 'bg-white dark:bg-gray-700 text-primary shadow-sm'
+                  : 'text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200'
+              }`}
+            >
+              {tab.label}
+            </button>
+          ))}
+        </div>
+      </div>
+
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {trainingPlans.map((plan) => (
+        {filteredPlans.map((plan) => (
           <button
             key={plan.id}
             onClick={() => handleSelect(plan.id)}
