@@ -1,10 +1,13 @@
 # Marathon Trainer
 
-A progressive web app that generates personalized marathon training plans based on Hal Higdon's proven methodology. Choose from 6 training plans (Novice 1/2, Intermediate 1/2, Advanced 1/2), set your race date, and get a complete 18-week schedule you can export directly to your calendar.
+A progressive web app that generates personalized training plans based on Hal Higdon's proven methodology. Choose from marathon, half marathon, and 5K plans, set your race date, and get a complete schedule you can export directly to your calendar.
+
+**Live at [marathon.fontlabs.ca](https://marathon.fontlabs.ca)**
 
 ## Features
 
-- **6 Training Plans** — Novice through Advanced levels based on Hal Higdon's programs
+- **Multiple Distances** — Marathon, Half Marathon, and 5K training plans
+- **Multiple Levels** — Novice through Advanced levels based on Hal Higdon's programs
 - **Customizable Schedule** — Set your race date and the plan builds around it
 - **Calendar Export** — One-click export to Google Calendar, Apple Calendar, or any ICS-compatible app
 - **Progress Tracking** — Check off completed workouts as you train
